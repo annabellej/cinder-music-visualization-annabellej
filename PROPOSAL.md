@@ -1,4 +1,5 @@
 <h3>Spotify Music Visualization</h3>
+
 > CS 126 Final Project Proposal
 ---
 Music visualization is a process that uses certain characteristics of music and 
@@ -32,6 +33,7 @@ In terms of the project's technical work, the tasks over three weeks will be
 allocated as follows:
 
 <h5>Week 1: Implement Spotify API</h5>
+
 * acquire user data for songs/playlists and music data for different songs
 * should be able to display information from API using Cinder (i.e. album art,
 current song, etc.)
@@ -40,6 +42,7 @@ music
 * option to use any non-user-specific songs/playlists from Spotify
 
 <h5>Week 2: Implement math/calculations for visualization</h5>
+
 * implement the math to create images using numbers from music data
 * convert volume (waveform) data into numbers for dimensional details of display
 (ex. size/length of certain shapes or patterns)
@@ -47,6 +50,7 @@ music
 * get frequency data (Fourier transform), convert to RGB color values for display 
 
 <h5>Week 3: Implement visualization display</h5>
+
 * use numbers calculated from Spotify music data to display music in a dynamic 
 bar graph/sound wave/shape form.
 * colors of display should also be taken from calculations
