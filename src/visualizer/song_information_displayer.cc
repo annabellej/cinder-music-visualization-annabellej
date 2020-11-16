@@ -7,6 +7,12 @@ namespace visualizer {
 using glm::vec2;
 using musicvisualizer::visualizer::SongInfoDisplayer;
 
+SongInfoDisplayer::SongInfoDisplayer() {
+  song_ = SpotifySong(" ", vector<string>({""}));
+  display_x_position_ = display_y_position_ = 0;
+  info_separation_ = 0;
+}
+
 SongInfoDisplayer::SongInfoDisplayer(const SpotifySong &song, size_t x_position,
                                      size_t y_position, size_t line_separation) {
   display_x_position_ = x_position;

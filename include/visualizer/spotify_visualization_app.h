@@ -4,6 +4,7 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "visualizer/song_information_displayer.h"
+#include "core/spotify_information_handler.h"
 
 namespace musicvisualizer {
 

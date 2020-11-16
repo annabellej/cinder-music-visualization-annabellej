@@ -10,7 +10,9 @@ namespace visualizer {
 class SongInfoDisplayer {
   public:
     /**
-     * Default constructor for a Song Information Displayer.
+     * Default constructor for a Song Information Displayer. By default,
+     * song has blank information, positions are at origin, and separation
+     * value for display text lines is 0.
      */
     SongInfoDisplayer();
 

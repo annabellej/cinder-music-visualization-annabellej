@@ -4,7 +4,7 @@ namespace musicvisualizer {
 
 namespace visualizer {
 
-SpotifyVisualizationApp::SpotifyVisualizationApp() {
+SpotifyVisualizationApp::SpotifyVisualizationApp() : info_displayer_() {
   ci::app::setWindowSize((int) kWindowWidth, (int) kWindowHeight);
 }
 

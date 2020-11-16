@@ -58,6 +58,11 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 
 list(APPEND TEST_FILES tests/test_spotify_information_handler.cc)
 
+# Add libcurl library
+find_package(CURL)
+set(LIBS ${LIBS} ${CURL_LIBRARIES})
+include_directories(${CURL_INCLUDE_DIRS})
+
 ci_make_app(
         APP_NAME    spotify-music-visualizer
         CINDER_PATH ${CINDER_PATH}
