@@ -4,21 +4,23 @@ namespace musicvisualizer {
 
 namespace visualizer {
 
-SpotifyVisualizationApp::SpotifyVisualizationApp() : info_displayer_() {
+SpotifyVisualizationApp::SpotifyVisualizationApp() : info_handler_() {
+  info_displayer_ = SongInfoDisplayer(kWindowWidth / 2,
+                                      kWindowHeight - kDisplayMargin,
+                                      kSongInfoSeparation);
   ci::app::setWindowSize((int) kWindowWidth, (int) kWindowHeight);
 }
 
-void SpotifyVisualizationApp::setup() {
-  //TODO: implement setup to get user authorization for spotify account
-  //should use spotify information handler
-}
-
 void SpotifyVisualizationApp::update() {
-  //TODO: implement update
-  //check current song and set info_displayer_ accordingly
+  //check current song and set info display accordingly
+  current_playing_object_ = info_handler_.FetchCurrentlyPlaying();
+  Track current_track = current_playing_object_.GetCurrentTrack();
+  info_displayer_.SetDisplaySong(current_track);
 
-  //get current song's timestamp and get song (track) information:
-  //use timestamp to match with song info at that time: get current
+  //convert timestamp to seconds
+  //int current_timestamp = current_playing_object_.GetProgress() / 1000;
+
+  //TODO: finish implementing update to get audio info for visualization
 }
 
 void SpotifyVisualizationApp::draw() {
@@ -28,8 +30,8 @@ void SpotifyVisualizationApp::draw() {
 
   //draw current song information
   info_displayer_.Draw();
-  //TODO: draw music visualizations (icosahedron + bar visualizer)
 
+  //TODO: draw music visualizations
 }
 
 } // namespace visualizer
