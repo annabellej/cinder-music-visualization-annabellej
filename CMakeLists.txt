@@ -50,7 +50,9 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
 list(APPEND CORE_SOURCE_FILES src/core/spotify_information_handler.cc)
-list(APPEND CORE_SOURCE_FILES src/core/spotify_song.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/artist.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/currently_playing.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/track.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/spotify_visualization_app.cc
@@ -68,6 +70,7 @@ ci_make_app(
         CINDER_PATH ${CINDER_PATH}
         SOURCES     apps/cinder_app_main.cc ${SOURCE_FILES}
         INCLUDES    include
+        LIBRARIES   ${CURL_LIBRARIES}
 )
 
 ci_make_app(
@@ -75,7 +78,7 @@ ci_make_app(
         CINDER_PATH ${CINDER_PATH}
         SOURCES     tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
         INCLUDES    include
-        LIBRARIES   catch2
+        LIBRARIES   catch2 ${CURL_LIBRARIES}
 )
 
 if(MSVC)
