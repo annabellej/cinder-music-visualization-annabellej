@@ -32,3 +32,5 @@ TEST_CASE("Info Handler records blank information when no music is played") {
     }
   }
 }
+
+//TODO: add tests for deserialization from JSON (artist, track, currentlyplaying)
