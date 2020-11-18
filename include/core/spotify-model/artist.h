@@ -32,7 +32,7 @@ class Artist {
      *
      * @return the string name of the Artist.
      */
-    string GetName();
+    string GetName() const;
 
     /**
      * Sets this artists name.

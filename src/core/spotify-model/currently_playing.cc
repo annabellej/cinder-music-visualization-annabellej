@@ -16,11 +16,11 @@ CurrentlyPlaying::CurrentlyPlaying(const json& currently_playing_file) {
   current_track_ = Track(currently_playing_file["item"]);
 }
 
-int CurrentlyPlaying::GetProgress() {
+int CurrentlyPlaying::GetProgress() const {
   return progress_;
 }
 
-Track CurrentlyPlaying::GetCurrentTrack() {
+Track CurrentlyPlaying::GetCurrentTrack() const {
   return current_track_;
 }
 

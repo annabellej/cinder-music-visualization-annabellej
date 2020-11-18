@@ -10,7 +10,7 @@ SpotifyInfoHandler::SpotifyInfoHandler() {
   api_access_token_ = FetchAccessToken();
 }
 
-CurrentlyPlaying SpotifyInfoHandler::FetchCurrentlyPlaying() {
+CurrentlyPlaying SpotifyInfoHandler::FetchCurrentlyPlaying() const {
   string request_endpoint = "https://api.spotify.com/v1/me/player/currently-playing";
   try {
     json request_result = SendRequest(request_endpoint, "GET", api_access_token_, "");
@@ -20,11 +20,11 @@ CurrentlyPlaying SpotifyInfoHandler::FetchCurrentlyPlaying() {
   }
 }
 
-bool SpotifyInfoHandler::IsAuthorized() {
+bool SpotifyInfoHandler::IsAuthorized() const {
   return !api_access_token_.empty();
 }
 
-string SpotifyInfoHandler::FetchAccessToken() {
+string SpotifyInfoHandler::FetchAccessToken() const {
   string request_endpoint = "https://accounts.spotify.com/api/token";
   //request body specified in Spotify API docs
   string post_request_body =

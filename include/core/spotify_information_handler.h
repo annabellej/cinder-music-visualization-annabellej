@@ -41,7 +41,7 @@ class SpotifyInfoHandler {
      *
      * @throws std::runtime_error if error occurs trying to get information.
      */
-    CurrentlyPlaying FetchCurrentlyPlaying();
+    CurrentlyPlaying FetchCurrentlyPlaying() const;
 
     //TODO: add function to fetch audio analysis of a track
 
@@ -52,7 +52,7 @@ class SpotifyInfoHandler {
      * @return  true    if access token is retrieved from Spotify, else
      *          false   if access token is still empty.
      */
-    bool IsAuthorized();
+    bool IsAuthorized() const;
 
   private:
     //=====================
@@ -80,7 +80,7 @@ class SpotifyInfoHandler {
      * @throws std::runtime_error when curl is unable to initiate to get token.
      * @throws std::logic_error   if refresh token does not give an access token.
      */
-    string FetchAccessToken();
+    string FetchAccessToken() const;
 };
 
 } // namespace spotifyhandler

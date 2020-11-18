@@ -27,7 +27,8 @@ void SongInfoDisplayer::SetDisplaySong(const Track &song) {
   song_ = song;
 }
 
-void SongInfoDisplayer::Draw() {
+void SongInfoDisplayer::Draw() const {
+  //TODO: stylize song info display (font, style, etc.)
   //draw song title on display
   ci::gl::drawStringCentered(
           song_.GetTrackName(),
@@ -38,6 +39,7 @@ void SongInfoDisplayer::Draw() {
   string artist_names;
   for (size_t index = 0; index < song_.GetNumArtists(); index++) {
     artist_names += song_.GetArtistAt(index).GetName();
+
     //add comma separator between artist names
     if (index != song_.GetNumArtists() - 1) {
       artist_names += ", ";

@@ -20,7 +20,7 @@ void SpotifyVisualizationApp::update() {
   //convert timestamp to seconds
   //int current_timestamp = current_playing_object_.GetProgress() / 1000;
 
-  //TODO: finish implementing update to get audio info for visualization
+  //TODO: finish implementing update for audio info for visualization
 }
 
 void SpotifyVisualizationApp::draw() {

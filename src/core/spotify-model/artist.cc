@@ -8,7 +8,7 @@ Artist::Artist(const json& artist_file) {
   artist_name_ = artist_file["name"];
 }
 
-string Artist::GetName() {
+string Artist::GetName() const {
   return artist_name_;
 }
 

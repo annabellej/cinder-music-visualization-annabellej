@@ -46,17 +46,17 @@ class SongInfoDisplayer {
     void SetDisplaySong(const Track& song);
 
     /**
-     * Displays the current song's relevant information
+     * Displays the current song's relevant information.
      */
-    void Draw();
+    void Draw() const;
 
   private:
     Track song_;
 
-    //information to position song info on display
+    //values to position song info on display
     size_t display_x_position_;
     size_t display_y_position_;
-    size_t info_separation_; //pixel separation between lines of song in
+    size_t info_separation_; //pixel separation between lines of song info
 };
 
 } // namespace visualizer

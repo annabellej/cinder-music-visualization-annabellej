@@ -44,21 +44,21 @@ class Track {
      *
      * @return the string ID for this track.
      */
-    string GetSpotifyID();
+    string GetSpotifyID() const;
 
     /**
      * Gets the name of this track.
      *
      * @return the string name of the track.
      */
-    string GetTrackName();
+    string GetTrackName() const;
 
     /**
      * Get the number of artists this Track has.
      *
      * @return the number of artists for this Track.
      */
-    size_t GetNumArtists();
+    size_t GetNumArtists() const;
 
     /**
      * Gets one of the Artists of this Track by index.
@@ -67,7 +67,7 @@ class Track {
      *
      * @return the Artist at the given position.
      */
-    Artist GetArtistAt(size_t index);
+    Artist GetArtistAt(size_t index) const;
 
   private:
     string spotify_id_;
