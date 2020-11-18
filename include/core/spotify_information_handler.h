@@ -6,6 +6,7 @@
 #include "core/spotify-model/artist.h"
 #include "core/spotify-model/currently_playing.h"
 #include "core/spotify-model/track.h"
+#include "core/spotify_curl_utils.h"
 
 namespace musicvisualizer {
 
@@ -13,9 +14,8 @@ namespace spotifyhandler {
 
 using std::string;
 using nlohmann::json;
-using musicvisualizer::spotifyhandler::Artist;
-using musicvisualizer::spotifyhandler::Track;
 using musicvisualizer::spotifyhandler::CurrentlyPlaying;
+using musicvisualizer::spotifyhandler::curlutils::SendRequest;
 
 /**
  * Class handling information retrieval from Spotify API and Spotify Account
@@ -42,6 +42,8 @@ class SpotifyInfoHandler {
      * @throws std::runtime_error if error occurs trying to get information.
      */
     CurrentlyPlaying FetchCurrentlyPlaying();
+
+    //TODO: add function to fetch audio analysis of a track
 
     /**
      * Determines if this application has been authorized (i.e. access token
@@ -76,14 +78,9 @@ class SpotifyInfoHandler {
      * @return the access token retrieved.
      *
      * @throws std::runtime_error when curl is unable to initiate to get token.
+     * @throws std::logic_error   if refresh token does not give an access token.
      */
     string FetchAccessToken();
-
-    /**
-     * Curl function used to handle receiving a response from Spotify.
-     */
-    static size_t WriteCallback(void *contents, size_t size, size_t nmemb,
-                                void *userp);
 };
 
 } // namespace spotifyhandler

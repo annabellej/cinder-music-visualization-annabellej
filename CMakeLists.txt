@@ -53,6 +53,7 @@ list(APPEND CORE_SOURCE_FILES src/core/spotify_information_handler.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/artist.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/currently_playing.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/track.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify_curl_utils.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/spotify_visualization_app.cc
