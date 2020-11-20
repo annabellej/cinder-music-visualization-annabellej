@@ -4,7 +4,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 #include "visualizer/song_information_displayer.h"
-#include "core/spotify_information_handler.h"
+#include "visualizer/song_visualization_displayer.h"
+#include "core/spotify_information_retriever.h"
 #include "core/spotify-model/currently_playing.h"
 #include "curl/curl.h"
 
@@ -12,7 +13,7 @@ namespace musicvisualizer {
 
 namespace visualizer {
 
-using musicvisualizer::spotifyhandler::SpotifyInfoHandler;
+using musicvisualizer::spotifyhandler::SpotifyInfoRetriever;
 using musicvisualizer::spotifyhandler::CurrentlyPlaying;
 
 /**
@@ -35,9 +36,10 @@ class SpotifyVisualizationApp : public ci::app::App {
     const size_t kSongInfoSeparation = 20; //space between lines of song info
 
   private:
-    SpotifyInfoHandler info_handler_;
+    SpotifyInfoRetriever info_handler_;
     SongInfoDisplayer info_displayer_;
     //TODO: add in music visualizer displayer
+
 
     //information on current song being visualized
     CurrentlyPlaying current_playing_object_;

@@ -1,5 +1,5 @@
 #include <catch2/catch.hpp>
-#include "core/spotify_information_handler.h"
+#include "core/spotify_information_retriever.h"
 #include "core/spotify-model/currently_playing.h"
 
 using musicvisualizer::spotifyhandler::SpotifyInfoHandler;

@@ -49,17 +49,20 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-list(APPEND CORE_SOURCE_FILES src/core/spotify_information_handler.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify_information_retriever.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/artist.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/currently_playing.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/track.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_analysis.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_segment.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify_curl_utils.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/spotify_visualization_app.cc
-                            src/visualizer/song_information_displayer.cc)
+                            src/visualizer/song_information_displayer.cc
+                            src/visualizer/song_visualization_displayer.cc)
 
-list(APPEND TEST_FILES tests/test_spotify_information_handler.cc)
+list(APPEND TEST_FILES tests/test_spotify_information_retriever.cc)
 
 # Add libcurl library
 find_package(CURL)

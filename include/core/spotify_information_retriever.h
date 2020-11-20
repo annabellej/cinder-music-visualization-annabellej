@@ -25,12 +25,12 @@ using musicvisualizer::spotifyhandler::curlutils::SendRequest;
  * https://curl.se/libcurl/c/libcurl-tutorial.html
  * https://github.com/curl/curl/blob/master/docs/examples/getinmemory.c
  */
-class SpotifyInfoHandler {
+class SpotifyInfoRetriever {
   public:
     /**
      * Default constructor for a Spotify Information Handler.
      */
-    SpotifyInfoHandler();
+    SpotifyInfoRetriever();
 
     /**
      * Gets a Currently Playing object representing the music the user is
@@ -44,6 +44,7 @@ class SpotifyInfoHandler {
     CurrentlyPlaying FetchCurrentlyPlaying() const;
 
     //TODO: add function to fetch audio analysis of a track
+
 
     /**
      * Determines if this application has been authorized (i.e. access token
