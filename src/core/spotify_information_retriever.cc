@@ -20,7 +20,11 @@ CurrentlyPlaying SpotifyInfoRetriever::FetchCurrentlyPlaying() const {
   }
 }
 
-
+AudioAnalysis SpotifyInfoRetriever::FetchAudioAnalysis(const string& song_id) const {
+  string request_endpoint = "https://api.spotify.com/v1/audio-analysis/" + song_id;
+  json request_result = SendRequest(request_endpoint, "GET", api_access_token_, "");
+  return AudioAnalysis(request_result);
+}
 
 bool SpotifyInfoRetriever::IsAuthorized() const {
   return !api_access_token_.empty();

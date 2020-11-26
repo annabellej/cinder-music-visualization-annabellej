@@ -9,6 +9,7 @@ namespace musicvisualizer {
 namespace spotifyhandler {
 
 using std::vector;
+using std::pair;
 using nlohmann::json;
 
 /**
@@ -28,9 +29,47 @@ class AudioAnalysis {
      */
     AudioAnalysis(const json& analysis_file);
 
+    /**
+     * Fetches the time for the beat at a given index.
+     *
+     * @param index the index at which to get the beat time.
+     *
+     * @return the pair denoting the given beat's time.
+     */
+    double GetBeatTimeAt(size_t index) const;
+
+    /**
+     * Fetch the audio segment object at a given index.
+     *
+     * @param index the index at which to get the segment.
+     *
+     * @return the audio segment at the given index.
+     */
+    Segment GetAudioSegmentAt(size_t index) const;
+
+    /**
+     * Given a certain time in seconds into a track, determines whether a beat
+     * occurs during this time.
+     *
+     * @param timestamp the time to evaluate.
+     *
+     * @return true if the given time is a beat in the track, else
+     *         false if the given time is not on a beat.
+     */
+    bool IsBeat(double timestamp) const;
+
+    /**
+     * Getches the audio analysis segment for a given time.
+     *
+     * @param timestamp the time to retrieve a segment for.
+     *
+     * @return the segment containing analyses for this time.
+     */
+    Segment GetSegmentAtTime(double timestamp) const;
+
   private:
-    vector<std::pair<float, float>> beats_;
-    vector<Segment> audio_segments_;
+    vector<double> beats_; //timestamp of each beat
+    vector<Segment> audio_segments_;   //analysis segments for track.
 };
 
 } // namespace spotifyhandler

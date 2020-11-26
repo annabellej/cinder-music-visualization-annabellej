@@ -6,6 +6,7 @@
 #include "core/spotify-model/artist.h"
 #include "core/spotify-model/currently_playing.h"
 #include "core/spotify-model/track.h"
+#include "core/spotify-model/audio_analysis.h"
 #include "core/spotify_curl_utils.h"
 
 namespace musicvisualizer {
@@ -15,6 +16,7 @@ namespace spotifyhandler {
 using std::string;
 using nlohmann::json;
 using musicvisualizer::spotifyhandler::CurrentlyPlaying;
+using musicvisualizer::spotifyhandler::AudioAnalysis;
 using musicvisualizer::spotifyhandler::curlutils::SendRequest;
 
 /**
@@ -43,8 +45,14 @@ class SpotifyInfoRetriever {
      */
     CurrentlyPlaying FetchCurrentlyPlaying() const;
 
-    //TODO: add function to fetch audio analysis of a track
-
+    /**
+     * Gets the Audio Analysis for a Spotify Song given the ID of the track.
+     *
+     * @param   song_id the Spotify ID for the song to fetch and analysis of.
+     *
+     * @return the Audio Analysis for the given song.
+     */
+    AudioAnalysis FetchAudioAnalysis(const string& song_id) const;
 
     /**
      * Determines if this application has been authorized (i.e. access token

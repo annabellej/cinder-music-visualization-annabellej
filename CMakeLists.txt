@@ -56,11 +56,13 @@ list(APPEND CORE_SOURCE_FILES src/core/spotify-model/track.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_analysis.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_segment.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify_curl_utils.cc)
+list(APPEND CORE_SOURCE_FILES src/core/utils.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/spotify_visualization_app.cc
                             src/visualizer/song_information_displayer.cc
-                            src/visualizer/song_visualization_displayer.cc)
+                            src/visualizer/song_visualization_displayer.cc
+                            src/visualizer/sound_color_utils.cc)
 
 list(APPEND TEST_FILES tests/test_spotify_information_retriever.cc)
 

@@ -31,7 +31,7 @@ class CurrentlyPlaying {
      *
      * @return the millisecond timestamp of progress.
      */
-    int GetProgress() const;
+    double GetProgress() const;
 
     /**
      * Gets the current track that is playing.
@@ -41,7 +41,7 @@ class CurrentlyPlaying {
     Track GetCurrentTrack() const;
 
   private:
-    int progress_; //progress in milliseconds into the current track
+    double progress_; //progress in seconds into the current track
     Track current_track_;
 };
 
