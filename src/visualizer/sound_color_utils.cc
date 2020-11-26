@@ -55,10 +55,16 @@ ci::Color AdjustTimbreColor(const ci::Color& original_color, float brightness) {
   //get brightness as decimal value
   float brightness_factor = kBrightnessAdjustment * (brightness / 1000.0);
 
-  //add adjusted values
-  return ci::Color(original_color.r + original_color.r * brightness_factor,
-                   original_color.g + original_color.g * brightness_factor,
-                   original_color.b + original_color.b * brightness_factor);
+  ci::Color adjusted_color = ci::Color(original_color.r + original_color.r * brightness_factor,
+                                       original_color.g + original_color.g * brightness_factor,
+                                       original_color.b + original_color.b * brightness_factor);
+
+  //use original color if adjustments darkens to black (not visible on display)
+  if (adjusted_color == ci::Color("black")) {
+    return original_color;
+  } else {
+    return adjusted_color;
+  }
 }
 
 } // namespace soundcolorutil

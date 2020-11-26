@@ -39,7 +39,7 @@ class SpotifyVisualizationApp : public ci::app::App {
     const size_t kSongInfoSeparation = 20; //space between lines of song info
     const size_t kVisualizationAmplification = 3; //multiplier for visualizations
 
-    const double kTimeOffset = 0.8; //time adjustment for music timer
+    const double kTimeOffset = 0.1; //time adjustment for music timer
 
   private:
     SpotifyInfoRetriever info_handler_;
