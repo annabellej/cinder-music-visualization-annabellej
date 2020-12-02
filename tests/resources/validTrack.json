@@ -1,0 +1,9 @@
+{
+	"id": "randomid",
+	"name": "randomname",
+	"artists": [{
+		"name": "random"
+	}, {
+		"name": "anotherrandom"
+	}]
+}

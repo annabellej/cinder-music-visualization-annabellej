@@ -14,6 +14,11 @@ CurrentlyPlaying::CurrentlyPlaying() {
 CurrentlyPlaying::CurrentlyPlaying(const json& currently_playing_file) {
   progress_ = currently_playing_file["progress_ms"];
   progress_ /= 1000.0; //convert from time given in milliseconds to seconds
+
+  if (progress_ < 0) {
+    throw std::invalid_argument("Data includes negative time value.");
+  }
+
   current_track_ = Track(currently_playing_file["item"]);
 }
 

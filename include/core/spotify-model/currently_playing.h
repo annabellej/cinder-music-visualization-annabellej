@@ -23,6 +23,8 @@ class CurrentlyPlaying {
      * Constructor for a Currently Playing object from a JSON file.
      *
      * @param currently_playing_file json file storing info for this object.
+     *
+     * @throws std::invalid_argument if time progress value in file is invalid.
      */
     explicit CurrentlyPlaying(const json& currently_playing_file);
 

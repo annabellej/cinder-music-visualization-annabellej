@@ -14,6 +14,10 @@ AudioAnalysis::AudioAnalysis(const json &analysis_file) {
   for (const json& segment_object: analysis_file["segments"]) {
     audio_segments_.push_back(Segment(segment_object));
   }
+
+  if (beats_.empty() || audio_segments_.empty()) {
+    throw std::invalid_argument("Data file failed to provide beat and segment information");
+  }
 }
 
 double AudioAnalysis::GetBeatTimeAt(size_t index) const {

@@ -26,6 +26,8 @@ class AudioAnalysis {
      * Constructor for an Audio Analysis object given JSON data.
      *
      * @param analysis_file the file containing data for this Audio Analysis.
+     *
+     * @throws std::invalid_argument if file does not provide sufficient info.
      */
     AudioAnalysis(const json& analysis_file);
 

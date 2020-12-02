@@ -25,6 +25,11 @@ Segment::Segment(const json &segment_file) {
   for (float pitch_value: segment_file["pitches"]) {
     pitches_.push_back(pitch_value);
   }
+
+  //times cannot be negative and there must be exactly 12 pitches (exactly 12 notes in music)
+  if (start_time_ < 0 || duration_ < 0 || GetPitchCount() != 12) {
+    throw std::invalid_argument("Data provides invalid values for Audio Segment.");
+  }
 }
 
 float Segment::GetStartTime() const {
@@ -45,6 +50,10 @@ float Segment::GetBrightness() const {
 
 float Segment::GetPitchDominanceAt(size_t pitch_index) const {
   return pitches_.at(pitch_index);
+}
+
+size_t Segment::GetPitchCount() const {
+  return pitches_.size();
 }
 
 } // namespace spotifyhandler

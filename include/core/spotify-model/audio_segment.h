@@ -26,6 +26,8 @@ class Segment {
      * Constructor for an audio segment given data from JSON.
      *
      * @param segment_file data file containing data for this Segment.
+     *
+     * @throws std::invalid_argument if file values are invalid.
      */
     Segment(const json& segment_file);
 
@@ -66,6 +68,13 @@ class Segment {
      * @return the dominance value of the given pitch.
      */
     float GetPitchDominanceAt(size_t pitch_index) const;
+
+    /**
+     * Finds the number of pitches stored in this segment.
+     *
+     * @return the number of pitches.
+     */
+    size_t GetPitchCount() const;
 
   private:
     float start_time_;      //beginning timestamp in seconds of this segment.
