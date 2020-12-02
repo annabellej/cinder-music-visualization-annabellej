@@ -64,7 +64,9 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/song_visualization_displayer.cc
                             src/visualizer/sound_color_utils.cc)
 
+list(APPEND TEST_FILES tests/testing_utils.cc)
 list(APPEND TEST_FILES tests/test_spotify_information_retriever.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_artist.cc)
 
 # Add libcurl library
 find_package(CURL)
@@ -75,7 +77,7 @@ ci_make_app(
         APP_NAME    spotify-music-visualizer
         CINDER_PATH ${CINDER_PATH}
         SOURCES     apps/cinder_app_main.cc ${SOURCE_FILES}
-        INCLUDES    include
+        INCLUDES    include tests/testing_utils.h
         LIBRARIES   ${CURL_LIBRARIES}
 )
 
@@ -83,7 +85,7 @@ ci_make_app(
         APP_NAME    music-visualizer-test
         CINDER_PATH ${CINDER_PATH}
         SOURCES     tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
-        INCLUDES    include
+        INCLUDES    include tests/testing_utils.h
         LIBRARIES   catch2 ${CURL_LIBRARIES}
 )
 

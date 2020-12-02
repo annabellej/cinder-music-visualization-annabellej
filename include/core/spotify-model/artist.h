@@ -21,9 +21,12 @@ class Artist {
     Artist() = default;
 
     /**
-     * Constructor for an Artist object from a JSON file.
+     * Constructor for an Artist object from a JSON file. Data must specify the
+     * name of the Artist.
      *
      * @param artist_file the JSON file containing data for this Artist.
+     *
+     * @throws std::invalid_argument if no name is given for this Artist.
      */
     explicit Artist(const json& artist_file);
 
@@ -38,6 +41,8 @@ class Artist {
      * Sets this artists name.
      *
      * @param name the name to set the Artist to.
+     *
+     * @throws std::invalid_argument if name given is empty.
      */
     void SetName(const string& name);
 
