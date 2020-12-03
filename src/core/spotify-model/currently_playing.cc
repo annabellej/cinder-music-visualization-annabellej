@@ -5,7 +5,7 @@ namespace musicvisualizer {
 namespace spotifyhandler {
 
 CurrentlyPlaying::CurrentlyPlaying() {
-  progress_ = 0;
+  progress_ = 0.0;
   Artist placeholder_artist = Artist();
   placeholder_artist.SetName("No Artist");
   current_track_ = Track("0", "No Current Track", vector<Artist>({placeholder_artist}));
@@ -13,10 +13,16 @@ CurrentlyPlaying::CurrentlyPlaying() {
 
 CurrentlyPlaying::CurrentlyPlaying(const json& currently_playing_file) {
   progress_ = currently_playing_file["progress_ms"];
+  progress_ /= 1000.0; //convert from time given in milliseconds to seconds
+
+  if (progress_ < 0) {
+    throw std::invalid_argument("Data includes negative time value.");
+  }
+
   current_track_ = Track(currently_playing_file["item"]);
 }
 
-int CurrentlyPlaying::GetProgress() const {
+double CurrentlyPlaying::GetProgress() const {
   return progress_;
 }
 

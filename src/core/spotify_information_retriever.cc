@@ -1,16 +1,16 @@
-#include "core/spotify_information_handler.h"
+#include "core/spotify_information_retriever.h"
 
 namespace musicvisualizer {
 
 namespace spotifyhandler {
 
-SpotifyInfoHandler::SpotifyInfoHandler() {
+SpotifyInfoRetriever::SpotifyInfoRetriever() {
   //set up curl to read from API
   curl_global_init(CURL_GLOBAL_ALL);
   api_access_token_ = FetchAccessToken();
 }
 
-CurrentlyPlaying SpotifyInfoHandler::FetchCurrentlyPlaying() const {
+CurrentlyPlaying SpotifyInfoRetriever::FetchCurrentlyPlaying() const {
   string request_endpoint = "https://api.spotify.com/v1/me/player/currently-playing";
   try {
     json request_result = SendRequest(request_endpoint, "GET", api_access_token_, "");
@@ -20,11 +20,17 @@ CurrentlyPlaying SpotifyInfoHandler::FetchCurrentlyPlaying() const {
   }
 }
 
-bool SpotifyInfoHandler::IsAuthorized() const {
+AudioAnalysis SpotifyInfoRetriever::FetchAudioAnalysis(const string& song_id) const {
+  string request_endpoint = "https://api.spotify.com/v1/audio-analysis/" + song_id;
+  json request_result = SendRequest(request_endpoint, "GET", api_access_token_, "");
+  return AudioAnalysis(request_result);
+}
+
+bool SpotifyInfoRetriever::IsAuthorized() const {
   return !api_access_token_.empty();
 }
 
-string SpotifyInfoHandler::FetchAccessToken() const {
+string SpotifyInfoRetriever::FetchAccessToken() const {
   string request_endpoint = "https://accounts.spotify.com/api/token";
   //request body specified in Spotify API docs
   string post_request_body =

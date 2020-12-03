@@ -11,6 +11,11 @@ Track::Track(const json& track_file) {
   for (const json& artist_object: track_file["artists"]) {
     track_artists_.push_back(Artist(artist_object));
   }
+
+  //ID and name cannot be empty, track cannot have 0 artists
+  if (spotify_id_.empty() || track_name_.empty() || track_artists_.empty()) {
+    throw std::invalid_argument("File contains invalid track information.");
+  }
 }
 
 Track::Track(const string& id, const string& name, const vector<Artist>& artists) {

@@ -23,6 +23,8 @@ class CurrentlyPlaying {
      * Constructor for a Currently Playing object from a JSON file.
      *
      * @param currently_playing_file json file storing info for this object.
+     *
+     * @throws std::invalid_argument if time progress value in file is invalid.
      */
     explicit CurrentlyPlaying(const json& currently_playing_file);
 
@@ -31,7 +33,7 @@ class CurrentlyPlaying {
      *
      * @return the millisecond timestamp of progress.
      */
-    int GetProgress() const;
+    double GetProgress() const;
 
     /**
      * Gets the current track that is playing.
@@ -41,7 +43,7 @@ class CurrentlyPlaying {
     Track GetCurrentTrack() const;
 
   private:
-    int progress_; //progress in milliseconds into the current track
+    double progress_; //progress in seconds into the current track
     Track current_track_;
 };
 

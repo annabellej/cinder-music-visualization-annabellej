@@ -28,12 +28,12 @@ void SongInfoDisplayer::SetDisplaySong(const Track &song) {
 }
 
 void SongInfoDisplayer::Draw() const {
-  //TODO: stylize song info display (font, style, etc.)
   //draw song title on display
   ci::gl::drawStringCentered(
           song_.GetTrackName(),
           vec2(display_x_position_, display_y_position_),
-          ci::Color("white"));
+          ci::Color("white"),
+          ci::Font("Times", 20));
 
   //create string of all song artists
   string artist_names;
@@ -50,7 +50,8 @@ void SongInfoDisplayer::Draw() const {
   ci::gl::drawStringCentered(
           artist_names,
           vec2(display_x_position_, display_y_position_ + info_separation_),
-          ci::Color("white"));
+          ci::Color("white"),
+          ci::Font("Times", 15));
 }
 
 } // namespace visualizer

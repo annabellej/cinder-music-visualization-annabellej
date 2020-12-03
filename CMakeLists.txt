@@ -49,17 +49,28 @@ get_filename_component(APP_PATH "${CMAKE_CURRENT_SOURCE_DIR}/" ABSOLUTE)
 
 include("${CINDER_PATH}/proj/cmake/modules/cinderMakeApp.cmake")
 
-list(APPEND CORE_SOURCE_FILES src/core/spotify_information_handler.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify_information_retriever.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/artist.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/currently_playing.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify-model/track.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_analysis.cc)
+list(APPEND CORE_SOURCE_FILES src/core/spotify-model/audio_segment.cc)
 list(APPEND CORE_SOURCE_FILES src/core/spotify_curl_utils.cc)
+list(APPEND CORE_SOURCE_FILES src/core/utils.cc)
 
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
                             src/visualizer/spotify_visualization_app.cc
-                            src/visualizer/song_information_displayer.cc)
+                            src/visualizer/song_information_displayer.cc
+                            src/visualizer/song_visualization_displayer.cc
+                            src/visualizer/sound_color_utils.cc)
 
-list(APPEND TEST_FILES tests/test_spotify_information_handler.cc)
+list(APPEND TEST_FILES tests/testing_utils.cc)
+list(APPEND TEST_FILES tests/test_spotify_information_retriever.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_artist.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_audioanalysis.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_audiosegment.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_currentlyplaying.cc)
+list(APPEND TEST_FILES tests/test-spotify-model/test_track.cc)
 
 # Add libcurl library
 find_package(CURL)
@@ -70,7 +81,7 @@ ci_make_app(
         APP_NAME    spotify-music-visualizer
         CINDER_PATH ${CINDER_PATH}
         SOURCES     apps/cinder_app_main.cc ${SOURCE_FILES}
-        INCLUDES    include
+        INCLUDES    include tests/testing_utils.h
         LIBRARIES   ${CURL_LIBRARIES}
 )
 
@@ -78,7 +89,7 @@ ci_make_app(
         APP_NAME    music-visualizer-test
         CINDER_PATH ${CINDER_PATH}
         SOURCES     tests/test_main.cc ${SOURCE_FILES} ${TEST_FILES}
-        INCLUDES    include
+        INCLUDES    include tests/testing_utils.h
         LIBRARIES   catch2 ${CURL_LIBRARIES}
 )
 

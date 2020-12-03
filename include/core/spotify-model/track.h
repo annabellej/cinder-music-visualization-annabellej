@@ -36,6 +36,8 @@ class Track {
      * @param id        Spotify id of this track.
      * @param name      name of this track.
      * @param artists   the artists for this track.
+     *
+     * @throws std::invalid_argument if file data is invalid for a track.
      */
     Track(const string& id, const string& name, const vector<Artist>& artists);
 

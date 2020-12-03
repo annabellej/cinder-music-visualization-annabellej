@@ -1,11 +1,13 @@
 #include <catch2/catch.hpp>
-#include "core/spotify_information_handler.h"
+#include "core/spotify_information_retriever.h"
 #include "core/spotify-model/currently_playing.h"
+#include "../tests/testing_utils.h"
 
-using musicvisualizer::spotifyhandler::SpotifyInfoHandler;
+using testingutils::PutFileInJson;
+using musicvisualizer::spotifyhandler::SpotifyInfoRetriever;
 using musicvisualizer::spotifyhandler::CurrentlyPlaying;
 
-SpotifyInfoHandler test_handler = SpotifyInfoHandler();
+SpotifyInfoRetriever test_handler = SpotifyInfoRetriever();
 
 TEST_CASE("Spotify Info Handler properly acquires authorization for API") {
   REQUIRE(test_handler.IsAuthorized());
@@ -33,4 +35,6 @@ TEST_CASE("Info Handler records blank information when no music is played") {
   }
 }
 
-//TODO: add tests for deserialization from JSON (artist, track, currentlyplaying)
+TEST_CASE("Empty JSON files handled by nlohmann library, cannot be used at all") {
+  REQUIRE_THROWS_AS(PutFileInJson("resources/emptyFile.json"), std::invalid_argument);
+}
