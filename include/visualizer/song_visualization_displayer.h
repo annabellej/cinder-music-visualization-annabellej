@@ -57,7 +57,7 @@ class SongVisualizationDisplayer {
     void SetTime(double timestamp);
 
     /**
-     * Draws the correct music visualizer display on Cinder.
+     * Draws the music visualizer display on Cinder.
      */
     void Draw() const;
 
@@ -110,11 +110,6 @@ class SongVisualizationDisplayer {
      * Draws the display on Cinder for the bar graph visualizer of a song.
      */
     void DrawBarVisualizer() const;
-
-    /**
-     * Draws the display on cinder for the 3D polygon visualizer of a song.
-     */
-    void DrawPolygonVisualizer() const;
 };
 
 } // namespace visualizer

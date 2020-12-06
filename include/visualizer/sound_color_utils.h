@@ -18,6 +18,15 @@ const double kLightSpeed = 300000000.0;
 //factor to adjust Spotify given brightness values
 const double kBrightnessAdjustment = 5.0;
 
+//visible light wavelength constants:
+const double kMinVisibleWavelength = 380.0; //lower limit for violet range
+const double kLowerBlueBound = 440.0; //lower limit for blue range
+const double kLowerGreenBound = 490.0; //lower limit for green range
+const double kLowerYellowBound = 510.0; //lower limit for yellow range
+const double kLowerOrangeBound = 580.0; //lower limit for orange range
+const double kLowerRedBound = 645.0; //lower limit for red range
+const double kMaxVisibleWavelength = 780.0; //upper limit for red range
+
 /**
  * Calculates the frequency in Hz for a musical note that is a given number of
  * half steps away from the standard A4 note of 440 Hz.

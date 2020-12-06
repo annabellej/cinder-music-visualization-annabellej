@@ -10,7 +10,7 @@ SongVisualizationDisplayer::SongVisualizationDisplayer(size_t x_pos,
                                                        size_t y_pos,
                                                        size_t amplification,
                                                        size_t bar_width) {
-  visualizer_count_ = 2; //currently support 2 types of visualization
+  visualizer_count_ = 1; //currently support 2 types of visualization
   current_visualizer_index_ = 0; //default starts at first vis type (bar graph)
   x_position_ = x_pos;
   y_position_ = y_pos;
@@ -34,13 +34,10 @@ void SongVisualizationDisplayer::SetTime(double timestamp) {
 }
 
 void SongVisualizationDisplayer::Draw() const {
+  //more cases can be added for more visualization types
   switch (current_visualizer_index_) {
     case 0: {
       DrawBarVisualizer();
-      break;
-    }
-    case 1: {
-      DrawPolygonVisualizer();
       break;
     }
   }
@@ -101,7 +98,6 @@ void SongVisualizationDisplayer::DrawBarVisualizer() const {
     //adjust color of bar based on musical brightness/timbre of current segment
     ci::Color bar_color = AdjustTimbreColor(musical_pitch_colors_.at(pitch_index),
                                             current_audio_segment.GetBrightness());
-
     //draw bar
     ci::gl::color(bar_color);
     vec2 top_left = vec2(bottom_right.x - bar_visualizer_width_, y_position_ - bar_height);
@@ -110,11 +106,6 @@ void SongVisualizationDisplayer::DrawBarVisualizer() const {
 
     bottom_right -= vec2(bar_visualizer_width_, 0);
   }
-}
-
-void SongVisualizationDisplayer::DrawPolygonVisualizer() const {
-  //TODO: implement drawing polygon visualizer
-
 }
 
 ci::Color SongVisualizationDisplayer::CalculateColorOfNote(

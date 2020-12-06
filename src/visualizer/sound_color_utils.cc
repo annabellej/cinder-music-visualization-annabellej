@@ -21,27 +21,27 @@ ci::Color ApproximatePitchColor(double wavelength) {
   double red, green, blue;
 
   //adjust R,G,B values based on range in visible light spectrum (violet to red)
-  if (wavelength >= 380.0 && wavelength < 440.0) { //in violet range
-    red = -(wavelength - 440.0) / (440.0 - 380.0);
+  if (wavelength >= kMinVisibleWavelength && wavelength < kLowerBlueBound) { //in violet range
+    red = -(wavelength - kLowerBlueBound) / (kLowerBlueBound - kMinVisibleWavelength);
     green = 0.0;
     blue = 1.0;
-  } else if (wavelength >= 440.0 && wavelength < 490.0) { //in green/blue range
+  } else if (wavelength >= kLowerBlueBound && wavelength < kLowerGreenBound) { //in green/blue range
     red = 0.0;
-    green = (wavelength - 440.0) / (490.0 - 440.0);
+    green = (wavelength - kLowerBlueBound) / (kLowerGreenBound - kLowerBlueBound);
     blue = 1.0;
-  } else if (wavelength >= 490.0 && wavelength < 510.0) { //in green range
+  } else if (wavelength >= kLowerGreenBound && wavelength < kLowerYellowBound) { //in green range
     red = 0.0;
     green = 1.0;
-    blue = -(wavelength - 490.0) / (510.0 - 490.0);
-  } else if (wavelength >= 510.0 && wavelength < 580.0) { //in yellow/green range
-    red = (wavelength - 510.0) / (580.0 - 510.0);
+    blue = -(wavelength - kLowerGreenBound) / (kLowerYellowBound - kLowerGreenBound);
+  } else if (wavelength >= kLowerYellowBound && wavelength < kLowerOrangeBound) { //in yellow/green range
+    red = (wavelength - kLowerYellowBound) / (kLowerOrangeBound - kLowerYellowBound);
     green = 1.0;
     blue = 0.0;
-  } else if (wavelength >= 580.0 && wavelength < 645.0) { //in orange/yellow range
+  } else if (wavelength >= kLowerOrangeBound && wavelength < kLowerRedBound) { //in orange/yellow range
     red = 1.0;
-    green = -(wavelength - 645.0) / (645.0 - 580.0);
+    green = -(wavelength - kLowerRedBound) / (kLowerRedBound - kLowerOrangeBound);
     blue = 0.0;
-  } else if (wavelength >= 645.0 && wavelength <= 780.0) { //in red range
+  } else if (wavelength >= kLowerRedBound && wavelength <= kMaxVisibleWavelength) { //in red range
     red = 1.0;
     green = blue = 0.0;
   } else { //black
