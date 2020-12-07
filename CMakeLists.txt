@@ -66,6 +66,7 @@ list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
 
 list(APPEND TEST_FILES tests/testing_utils.cc)
 list(APPEND TEST_FILES tests/test_spotify_information_retriever.cc)
+list(APPEND TEST_FILES tests/test_soundcolor.cc)
 list(APPEND TEST_FILES tests/test-spotify-model/test_artist.cc)
 list(APPEND TEST_FILES tests/test-spotify-model/test_audioanalysis.cc)
 list(APPEND TEST_FILES tests/test-spotify-model/test_audiosegment.cc)

@@ -10,7 +10,7 @@ SongVisualizationDisplayer::SongVisualizationDisplayer(size_t x_pos,
                                                        size_t y_pos,
                                                        size_t amplification,
                                                        size_t bar_width) {
-  visualizer_count_ = 1; //currently support 2 types of visualization
+  visualizer_count_ = 1; //currently support 1 type of visualization
   current_visualizer_index_ = 0; //default starts at first vis type (bar graph)
   x_position_ = x_pos;
   y_position_ = y_pos;

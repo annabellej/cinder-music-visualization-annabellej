@@ -40,6 +40,13 @@ json SendRequest(const string& endpoint, const string& method,
 size_t WriteCallback(void *contents, size_t size, size_t nmemb,
                             void *userp);
 
+/**
+ * Opens the given link in a browser.
+ *
+ * @param url the url to visit.
+ */
+void OpenBrowserLink(const string& url);
+
 } // namespace curlutils
 
 } // namespace spotifyhandler

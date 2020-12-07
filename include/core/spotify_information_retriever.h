@@ -18,6 +18,7 @@ using nlohmann::json;
 using musicvisualizer::spotifyhandler::CurrentlyPlaying;
 using musicvisualizer::spotifyhandler::AudioAnalysis;
 using musicvisualizer::spotifyhandler::curlutils::SendRequest;
+using musicvisualizer::spotifyhandler::curlutils::OpenBrowserLink;
 
 /**
  * Class handling information retrieval from Spotify API and Spotify Account
@@ -73,13 +74,23 @@ class SpotifyInfoRetriever {
     const string kClientID = "e4f67126c52e44129ece0e0b44cb1ba4";
     //app secret for secure calls to Spotify
     const string kClientSecret = "2394e5d88bce4dd49b02626b9e9902a3";
+    //redirect uri to navigate to after authorizing
+    const string kRedirectURI = "https://www.google.com/";
     //user-specific token used to retrieve access token from Spotify
-    //TODO: replace with method to get refresh token from any user
-    string refresh_token_ = "AQCThvPq5KJfN37EZiFF0C4kTTW3hfvSX5j25glFn-xmwEeO9xjWh7zGNoLryBSt3j8A3DQUIO9Lqi0NWa3WpvfrFcTmEIZHzpcEUvd0BWqd2716MskxIH9oo66z8mB5j9g";
+    string refresh_token_;
+    //authorization code to retrieve tokens for user information
+    string authorization_code_ = "";
 
     //=====================
     //Private Helper Methods
     //=====================
+    /**
+     * Retrieves a refresh token for the Spotify user.
+     *
+     * @return the refresh token for this user.
+     */
+    string FetchRefreshToken() const;
+
     /**
      * Retrieves a new access token from Spotify Account Services using a given
      * refresh token.

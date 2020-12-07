@@ -43,17 +43,22 @@ json SendRequest(const string& endpoint, const string& method,
 
   //perform request
   curl_easy_perform(curl);
-  if (readBuffer.empty()) {
-    throw std::logic_error("Requested nonexistent information.");
-  }
-  json request_result = json::parse(readBuffer);
 
   //check if request is successful
   long status_code;
   curl_easy_getinfo (curl, CURLINFO_RESPONSE_CODE, &status_code);
-  if (status_code != 200 && status_code != 204) { //200 and 204 are success codes
-    throw std::runtime_error(request_result["error"]);
+  if (status_code == 302) {
+
   }
+  if (status_code != 200 && status_code != 204) { //200 and 204 are success codes
+    throw std::runtime_error("Unsuccessful request!");
+  }
+
+  //read returned data
+  if (readBuffer.empty()) {
+    throw std::logic_error("Requested nonexistent information.");
+  }
+  json request_result = json::parse(readBuffer);
 
   //cleanup curl
   curl_easy_cleanup(curl);
@@ -64,6 +69,11 @@ size_t WriteCallback(void *contents, size_t size,
                                          size_t nmemb, void *userp) {
   ((std::string*)userp)->append((char*)contents, size * nmemb);
   return size * nmemb;
+}
+
+void OpenBrowserLink(const string& url) {
+  string open = string("open ").append(url);
+  system(open.c_str());
 }
 
 } //namespace curlutils

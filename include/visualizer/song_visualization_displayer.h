@@ -110,6 +110,8 @@ class SongVisualizationDisplayer {
      * Draws the display on Cinder for the bar graph visualizer of a song.
      */
     void DrawBarVisualizer() const;
+
+
 };
 
 } // namespace visualizer
