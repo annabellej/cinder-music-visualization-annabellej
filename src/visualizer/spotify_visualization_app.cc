@@ -66,6 +66,8 @@ void SpotifyVisualizationApp::draw() {
 void SpotifyVisualizationApp::keyDown(ci::app::KeyEvent event) {
   if (event.getCode() == ci::app::KeyEvent::KEY_RETURN) {
     song_visualizer_.SwitchVisualizer();
+  } else if (event.getCode() == ci::app::KeyEvent::KEY_RIGHT) {
+    song_visualizer_.SwitchColorScheme();
   }
 }
 

@@ -16,6 +16,7 @@ SongVisualizationDisplayer::SongVisualizationDisplayer(size_t x_pos,
   y_position_ = y_pos;
   amplification_factor_ = amplification;
   bar_visualizer_width_ = bar_width;
+  isDisplayMonochrome = false;
   timestamp_ = 0.0;
 
   //set up colors corresponding to musical pitches for visualization
@@ -45,6 +46,10 @@ void SongVisualizationDisplayer::Draw() const {
 
 void SongVisualizationDisplayer::SwitchVisualizer() {
   current_visualizer_index_ = (current_visualizer_index_ + 1) % visualizer_count_;
+}
+
+void SongVisualizationDisplayer::SwitchColorScheme() {
+  isDisplayMonochrome = !isDisplayMonochrome;
 }
 
 void SongVisualizationDisplayer::FetchPitchColors() {
@@ -95,9 +100,16 @@ void SongVisualizationDisplayer::DrawBarVisualizer() const {
       bar_height *= amplification_factor_;
     }
 
-    //adjust color of bar based on musical brightness/timbre of current segment
-    ci::Color bar_color = AdjustTimbreColor(musical_pitch_colors_.at(pitch_index),
-                                            current_audio_segment.GetBrightness());
+    //set color of bar display; b/w if display is monochrome, otherwise colored
+    ci::Color bar_color;
+    if (isDisplayMonochrome) {
+      bar_color = ci::Color("white");
+    } else {
+      //adjust color of bar based on musical brightness/timbre of current segment
+      bar_color = AdjustTimbreColor(musical_pitch_colors_.at(pitch_index),
+                                    current_audio_segment.GetBrightness());
+    }
+
     //draw bar
     ci::gl::color(bar_color);
     vec2 top_left = vec2(bottom_right.x - bar_visualizer_width_, y_position_ - bar_height);

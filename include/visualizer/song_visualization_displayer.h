@@ -66,6 +66,12 @@ class SongVisualizationDisplayer {
      */
     void SwitchVisualizer();
 
+    /**
+     * Switches the display between monochrome (black and white only) and fully
+     * colored visualizations.
+     */
+    void SwitchColorScheme();
+
   private:
     //=====================
     //Member Variables
@@ -82,6 +88,7 @@ class SongVisualizationDisplayer {
     size_t amplification_factor_;
 
     size_t bar_visualizer_width_;
+    bool isDisplayMonochrome; //true if display is set to black/white
 
     //12 notes' corresponding colors in order: C, C#, D, D#, . . . , B.
     vector<ci::Color> musical_pitch_colors_;
