@@ -76,10 +76,12 @@ class SpotifyInfoRetriever {
     const string kClientSecret = "2394e5d88bce4dd49b02626b9e9902a3";
     //redirect uri to navigate to after authorizing
     const string kRedirectURI = "https://www.google.com/";
+    //file containing refresh token information
+    const string refresh_file_ = "project-files/refresh_token";
+    //authorization code to retrieve tokens for user information
+    const string authorization_code_ = "PASTE YOUR CODE HERE";
     //user-specific token used to retrieve access token from Spotify
     string refresh_token_;
-    //authorization code to retrieve tokens for user information
-    string authorization_code_ = "";
 
     //=====================
     //Private Helper Methods

@@ -12,7 +12,7 @@ and display colors are calculated as RGB values corresponding to musical
 pitches. <br>
 *Current supported visualization styles: <b>bar chart visualizer</b>*
 
-![Visualizer Screenshot](project-media/visualizer_snapshot.png)
+![Visualizer Screenshot](project-files/visualizer_snapshot.png)
 
 ---
 > <b>Usage</b>
