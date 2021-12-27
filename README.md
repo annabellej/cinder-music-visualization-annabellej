@@ -1,6 +1,7 @@
-<h3>Spotify Music Visualization: CS 126 Final Project</h3>
+# Spotify Music Visualization
 
----
+![MIT License Badge](https://img.shields.io/badge/license-MIT-green)
+
 > <b>Project Description</b>
 
 C++ music visualizer using Cinder/OpenGL for audio visualization. 
@@ -10,6 +11,7 @@ etc.<br>
 Custom displays are derived from Spotify's audio analysis for each song,
 and display colors are calculated as RGB values corresponding to musical
 pitches. <br>
+
 *Current supported visualization styles: <b>bar chart visualizer</b>*
 
 ![Visualizer Screenshot](project-files/visualizer_snapshot.png)
